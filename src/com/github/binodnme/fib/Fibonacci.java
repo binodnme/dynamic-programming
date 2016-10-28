@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by lftech on 10/25/2016.
+ * Created by Binod Shrestha
  */
 public class Fibonacci {
     private static Map<Integer, Long> map = new HashMap<>();
