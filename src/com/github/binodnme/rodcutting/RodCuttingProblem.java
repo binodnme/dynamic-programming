@@ -12,10 +12,23 @@ public class RodCuttingProblem {
 
     public static void main(String[] args) {
         initMap();
-        System.out.println(cutRod(100, profitMap));
+        System.out.println(memoizedCutRod(35, profitMap));
     }
 
     private static Integer cutRod(Integer length, Map<Integer, Integer> map) {
+        if (length == 0) return 0;
+
+        Integer revenue = -1;
+        for (int i = 0; i <= length; i++) {
+            Integer profit = map.get(i);
+            if (profit != null) {
+                revenue = maxOf(revenue, profit + cutRod(length - i, map));
+            }
+        }
+        return revenue;
+    }
+
+    private static Integer memoizedCutRod(Integer length, Map<Integer, Integer> map) {
         if (length == 0) return 0;
 
         Integer storedData = history.get(length);
@@ -27,7 +40,7 @@ public class RodCuttingProblem {
         for (int i = 0; i <= length; i++) {
             Integer profit = map.get(i);
             if (profit != null) {
-                revenue = maxOf(revenue, profit + cutRod(length - i, map));
+                revenue = maxOf(revenue, profit + memoizedCutRod(length - i, map));
             }
         }
         history.put(length, revenue);
