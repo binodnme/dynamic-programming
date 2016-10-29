@@ -37,6 +37,6 @@ public class Fibonacci {
     public static void main(String[] args) {
         map.put(1, 1L);
         map.put(2, 1L);
-        System.out.println(fib2(1000));
+        System.out.println(fib2(80));
     }
 }
