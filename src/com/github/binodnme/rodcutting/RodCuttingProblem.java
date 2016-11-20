@@ -12,7 +12,7 @@ public class RodCuttingProblem {
 
     public static void main(String[] args) {
         initMap();
-        System.out.println(memoizedCutRodWithSolution(500, profitMap));
+        System.out.println(memoizedCutRod(500, profitMap));
     }
 
     //naive solution
